@@ -58,3 +58,5 @@ Debug/
 .settings/org.eclipse.cdt.debug.core.prefs
 .settings/org.eclipse.core.resources.prefs
 .DS_Store
+.theia/launch.json
+Untitled.theia-workspace
