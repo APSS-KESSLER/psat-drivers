@@ -10,8 +10,8 @@
 
 // DO NOT DEFINE THE SAME eUSCI for UART and SPI !
 
-#define UART_A0 1
-//#define UART_A1 1
+//#define UART_A0 1
+#define UART_A1 1
 
 #define SPI_A0 1
 //#define SPI_A1 1

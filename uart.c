@@ -7,21 +7,12 @@ void print(char text[])
     uint16_t i = 0;
     while (text[i] != '\0')
     { // Check for end of string
-    #ifdef UART_A0 
-        while (!(UCA0IFG & UCTXIFG))
+
+        while (!(UART_IF_REG & UCTXIFG))
             ; // Wait for any ongoing transmissions to finish
         // NOTE: You might be tempted to check for completion by checking
         // UCTXCPTIFG instead, but this doesn't work for UART: See Errata USCI42.
-        UCA0TXBUF = text[i];
-    #elif UART_A1
-    while (!(UCA1IFG & UCTXIFG))
-            ; // Wait for any ongoing transmissions to finish
-        // NOTE: You might be tempted to check for completion by checking
-        // UCTXCPTIFG instead, but this doesn't work for UART: See Errata USCI42.
-        UCA1TXBUF = text[i];
-    #else 
-    #error "PICK A0 or A1"
-    #endif
+        UART_TX_BUF = text[i];
         i++; // Increment counter
 
     }
@@ -45,6 +36,8 @@ void printNumber(uint16_t num)
 
     print(str);
 }
+
+
 
 void setupUART(void)
 {
